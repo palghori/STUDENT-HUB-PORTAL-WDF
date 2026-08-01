@@ -1,0 +1,24 @@
+StudentHub Portal Requirements
+
+1. Overview
+The StudentHub is a web-based portal designed to provide students with a centralized platform for academic activities, including tracking courses, assignments, attendance, and results.
+
+2. Functional Requirements
+- User Authentication: Dedicated pages to login (login.html) and register (register.html).
+- Dashboard: Display a summary of upcoming classes, pending assignments, and attendance status.
+- Course Management: Show a list of currently enrolled courses.
+- Assignments: Display tasks with their status (pending, in-progress, completed) and due dates.
+- Attendance Tracking: Provide a tabular summary of attendance percentage per subject.
+- Results/Grades: Show academic marks and grades for each subject.
+- User Profile: View basic student details (name, enrollment ID, department, email).
+- Contact Support: Allow users to send inquiries via a contact form.
+
+3. Technical Requirements
+- Frontend Technologies: Pure HTML5 and CSS3 (no external frameworks like Bootstrap or Tailwind required for the base structure).
+- Total Pages (10): index.html, login.html, register.html, dashboard.html, courses.html, assignment.html, attendence.html, result.html, profile.html, contact.html
+- Project Architecture: Code must be organized cleanly into CSS, JS, IMAGES, and PAGES folders.
+
+4. Non-Functional Requirements
+- Navigation: Intuitive and consistent global navigation bar visible on all content pages.
+- UI Consistency: Uniform styling applied globally using a single main stylesheet (`script.css`).
+- Compatibility: Must be viewable across standard modern web browsers.
