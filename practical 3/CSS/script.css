@@ -20,6 +20,15 @@ body {
   background: linear-gradient(90deg, #8b5e3c, #c97a45);
   padding: 18px 24px;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.16);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-links {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
 }
 
 .brand {
@@ -43,7 +52,8 @@ main {
 
 .hero,
 .card,
-.content-box {
+.content-box,
+.form-box {
   background: #fffdfa;
   padding: 24px;
   border: 1px solid #f0d8c2;
@@ -54,9 +64,18 @@ main {
 .hero h1,
 .hero h2,
 .card h2,
-.content-box h2 {
+.content-box h2,
+.form-box h2 {
   color: #8b5e3c;
   margin-top: 0;
+}
+
+.form-box {
+  max-width: 500px;
+  margin: 40px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /* 
@@ -141,6 +160,8 @@ select {
   border-radius: 8px;
   font-size: 14px;
   background: #fffdfa;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 /* 
@@ -154,6 +175,8 @@ button {
   padding: 10px 14px;
   border-radius: 8px;
   cursor: pointer;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 button:hover {
