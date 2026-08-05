@@ -1,7 +1,7 @@
 /* 
    1. OVERALL PAGE LAYOUT & BACKGROUND
    Controls the entire page's background and default font
-   ========================================= */
+    */
 body {
   font-family: "Segoe UI", Arial, sans-serif;
   background: linear-gradient(135deg, #fff8f0 0%, #fdf2e9 100%);
@@ -11,10 +11,10 @@ body {
   line-height: 1.7;
 }
 
-/* =========================================
+/* 
    2. NAVIGATION BAR (TOP MENU)
    Styles the top menu and the brand/logo text
-   ========================================= */
+    */
 .navbar {
   background: linear-gradient(90deg, #8b5e3c, #c97a45);
   padding: 18px 24px;
@@ -29,10 +29,10 @@ body {
   letter-spacing: 0.5px;
 }
 
-/* =========================================
+/* 
    3. MAIN CONTENT CONTAINERS (BOXES)
    Styles the main layout and the white content boxes (cards)
-   ========================================= */
+   */
 main {
   padding: 24px;
   max-width: 1000px;
@@ -57,10 +57,10 @@ main {
   margin-top: 0;
 }
 
-/* =========================================
+/* 
    4. FEATURE GRID (SIDE-BY-SIDE BOXES)
    Styles rows of smaller boxes used for features/options
-   ========================================= */
+    */
 .features {
   display: flex;
   gap: 15px;
@@ -82,10 +82,10 @@ main {
   color: #a45f2d;
 }
 
-/* =========================================
+/* 
    5. LINKS AND TEXT COLORS
    Styles clickable links and headings
-   ========================================= */
+    */
 .nav-links a,
 .hero>p a {
   color: rgb(234, 177, 45);
@@ -112,10 +112,10 @@ ul {
   padding-left: 20px;
 }
 
-/* =========================================
+/* 
    6. TEXT BOXES & DROPDOWNS (FORMS)
    Styles all text boxes, text areas, and dropdown menus
-   ========================================= */
+   */
 form {
   display: flex;
   flex-direction: column;
@@ -139,10 +139,10 @@ select {
   background: #fffdfa;
 }
 
-/* =========================================
+/* 
    7. BUTTONS
    Styles clickable buttons (like Submit/Login) and their hover effects
-   ========================================= */
+    */
 button {
   background: linear-gradient(90deg, #a45f2d, #c97a45);
   color: white;
@@ -156,10 +156,10 @@ button:hover {
   background: linear-gradient(90deg, #8c4d22, #b46731);
 }
 
-/* =========================================
+/* 
    8. TABLES (DATA GRIDS)
    Styles data tables, headers, and cells
-   ========================================= */
+    */
 table {
   width: 100%;
   border-collapse: collapse;
