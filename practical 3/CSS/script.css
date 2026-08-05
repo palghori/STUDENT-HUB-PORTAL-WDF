@@ -1,6 +1,6 @@
 /* 
    1. OVERALL PAGE LAYOUT & BACKGROUND
-   Controls the entire page's background and default font
+   Control entire page's background and default font
     */
 body {
   font-family: "Segoe UI", Arial, sans-serif;
@@ -14,6 +14,7 @@ body {
 /* 
    2. NAVIGATION BAR (TOP MENU)
    Styles the top menu and the brand/logo text
+   naviagtion bar ma changes aya thi thay
     */
 .navbar {
   background: linear-gradient(90deg, #8b5e3c, #c97a45);
@@ -32,6 +33,7 @@ body {
 /* 
    3. MAIN CONTENT CONTAINERS (BOXES)
    Styles the main layout and the white content boxes (cards)
+   main content box ma changes aay thi thay
    */
 main {
   padding: 24px;
@@ -60,6 +62,7 @@ main {
 /* 
    4. FEATURE GRID (SIDE-BY-SIDE BOXES)
    Styles rows of smaller boxes used for features/options
+   nav bar ma je student hub ni niche ni line che e 
     */
 .features {
   display: flex;
@@ -85,6 +88,7 @@ main {
 /* 
    5. LINKS AND TEXT COLORS
    Styles clickable links and headings
+   link par mouse nu pointer lay jayiea ane je colour change thay 
     */
 .nav-links a,
 .hero>p a {
