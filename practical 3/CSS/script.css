@@ -1,5 +1,4 @@
 /* 
-   1. OVERALL PAGE LAYOUT & BACKGROUND
    Control entire page's background and default font
     */
 body {
@@ -9,10 +8,10 @@ body {
   margin: 0;
   padding: 0;
   line-height: 1.7;
+  /* Adds space between lines of text to make paragraphs easier to read (1.7 times the normal font size). */
 }
 
 /* 
-   2. NAVIGATION BAR (TOP MENU)
    Styles the top menu and the brand/logo text
    naviagtion bar ma changes aya thi thay
     */
@@ -20,6 +19,7 @@ body {
   background: linear-gradient(90deg, #8b5e3c, #c97a45);
   padding: 18px 24px;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.16);
+  /* nav bar ne alag batava mate box shadow thi thase */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -27,8 +27,10 @@ body {
 
 .nav-links {
   display: flex;
+  /* links ne horizontal ma rakhva mate */
   gap: 15px;
   flex-wrap: wrap;
+  /* Allows links to wrap to a new line on very small screens instead of overflowing. */
 }
 
 .brand {
@@ -40,7 +42,6 @@ body {
 }
 
 /* 
-   3. MAIN CONTENT CONTAINERS (BOXES)
    Styles the main layout and the white content boxes (cards)
    main content box ma changes aya thi thay
    */
@@ -72,6 +73,7 @@ main {
 
 .form-box {
   max-width: 500px;
+  /* login/register box */
   margin: 40px auto;
   display: flex;
   flex-direction: column;
@@ -79,7 +81,6 @@ main {
 }
 
 /* 
-   4. FEATURE GRID (SIDE-BY-SIDE BOXES)
    Styles rows of smaller boxes used for features/options
    nav bar ma je student hub ni niche ni line che e 
     */
@@ -96,6 +97,7 @@ main {
   border-radius: 10px;
   padding: 15px;
   flex: 1;
+  /* Tells the boxes to grow equally to fill the available horizontal space. */
   min-width: 180px;
 }
 
@@ -105,7 +107,6 @@ main {
 }
 
 /* 
-   5. LINKS AND TEXT COLORS
    Styles clickable links and headings
    link par mouse nu pointer lay jayiea ane je colour change thay 
     */
@@ -136,7 +137,6 @@ ul {
 }
 
 /* 
-   6. TEXT BOXES & DROPDOWNS (FORMS)
    Styles all text boxes, text areas, and dropdown menus
    */
 form {
@@ -165,8 +165,7 @@ select {
 }
 
 /* 
-   7. BUTTONS
-   Styles clickable buttons (like Submit/Login) and their hover effects
+  Styles clickable buttons (like Submit/Login) and their hover effects
     */
 button {
   background: linear-gradient(90deg, #a45f2d, #c97a45);
@@ -184,7 +183,6 @@ button:hover {
 }
 
 /* 
-   8. TABLES (DATA GRIDS)
    Styles data tables, headers, and cells
     */
 table {
