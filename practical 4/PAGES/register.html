@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register</title>
+    <link rel="stylesheet" href="../CSS/script.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <a class="brand" href="index.html">StudentHub</a>
+      <div class="nav-links">
+        <a href="login.html">Login</a>
+        <a href="register.html">Register</a>
+        <a href="index.html">Home</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="courses.html">Courses</a>
+        <a href="assignment.html">Assignments</a>
+        <a href="attendence.html">Attendance</a>
+        <a href="result.html">Result</a>
+        <a href="profile.html">Profile</a>
+        <a href="contact.html">Contact</a>
+        
+      </div>
+    </nav>
+
+    <main>
+      <section class="form-box">
+        <h2>Create Account</h2>
+        <form onsubmit="validateAuth(event, 'register')">
+          <label>Full Name</label>
+          <input type="text" placeholder="Your name" required />
+          <label for="enrollment">Enrollment ID</label>
+          <input id="enrollment" type="text" placeholder="Enter enrollment ID (e.g., 25DCE030)" required />
+          <label>Email</label>
+          <input type="email" placeholder="student@example.com" />
+          <label>Password</label>
+          <input type="password" placeholder="Create password" />
+          <button type="submit">Register</button>
+        </form>
+      </section>
+    </main>
+    <script src="../java.js"></script>
+  </body>
+</html>

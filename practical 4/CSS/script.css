@@ -1,0 +1,204 @@
+/* 
+   Control entire page's background and default font
+    */
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: linear-gradient(135deg, #fff8f0 0%, #fdf2e9 100%);
+  color: #3a2a1a;
+  margin: 0;
+  padding: 0;
+  line-height: 1.7;
+  /* Adds space between lines of text to make paragraphs easier to read (1.7 times the normal font size). */
+}
+
+/* 
+   Styles the top menu and the brand/logo text
+   naviagtion bar ma changes aya thi thay
+    */
+.navbar {
+  background: linear-gradient(90deg, #8b5e3c, #c97a45);
+  padding: 18px 24px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.16);
+  /* nav bar ne alag batava mate box shadow thi thase */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-links {
+  display: flex;
+  /* links ne horizontal ma rakhva mate */
+  gap: 15px;
+  flex-wrap: wrap;
+  /* Allows links to wrap to a new line on very small screens instead of overflowing. */
+}
+
+.brand {
+  color: #fff8f0;
+  text-decoration: none;
+  font-size: 26px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
+/* 
+   Styles the main layout and the white content boxes (cards)
+   main content box ma changes aya thi thay
+   */
+main {
+  padding: 24px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.hero,
+.card,
+.content-box,
+.form-box {
+  background: #fffdfa;
+  padding: 24px;
+  border: 1px solid #f0d8c2;
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+}
+
+.hero h1,
+.hero h2,
+.card h2,
+.content-box h2,
+.form-box h2 {
+  color: #8b5e3c;
+  margin-top: 0;
+}
+
+.form-box {
+  max-width: 500px;
+  /* login/register box */
+  margin: 40px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 
+   Styles rows of smaller boxes used for features/options
+   nav bar ma je student hub ni niche ni line che e 
+    */
+.features {
+  display: flex;
+  gap: 15px;
+  margin: 20px 0;
+  flex-wrap: wrap;
+}
+
+.feature-box {
+  background: #fff5ea;
+  border: 1px solid #f2d6bd;
+  border-radius: 10px;
+  padding: 15px;
+  flex: 1;
+  /* Tells the boxes to grow equally to fill the available horizontal space. */
+  min-width: 180px;
+}
+
+.feature-box h3 {
+  margin-top: 0;
+  color: #a45f2d;
+}
+
+/* 
+   Styles clickable links and headings
+   link par mouse nu pointer lay jayiea ane je colour change thay 
+    */
+.nav-links a,
+.hero>p a {
+  color: rgb(234, 177, 45);
+}
+
+.hero a,
+a {
+  color: #a45f2d;
+  text-decoration: none;
+}
+
+.hero a:hover,
+a:hover {
+  text-decoration: underline;
+}
+
+p,
+ul,
+li {
+  color: #5c4535;
+}
+
+ul {
+  padding-left: 20px;
+}
+
+/* 
+   Styles all text boxes, text areas, and dropdown menus
+   */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 420px;
+  margin-top: 15px;
+}
+
+label {
+  font-weight: bold;
+  color: #4b3423;
+}
+
+input,
+textarea,
+select {
+  padding: 10px;
+  border: 1px solid #e5c8a8;
+  border-radius: 8px;
+  font-size: 14px;
+  background: #fffdfa;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* 
+  Styles clickable buttons (like Submit/Login) and their hover effects
+    */
+button {
+  background: linear-gradient(90deg, #a45f2d, #c97a45);
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+button:hover {
+  background: linear-gradient(90deg, #8c4d22, #b46731);
+}
+
+/* 
+   Styles data tables, headers, and cells
+    */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 12px;
+  background-color: white;
+}
+
+th,
+td {
+  border: 1px solid #f1dccb;
+  padding: 10px;
+  text-align: left;
+}
+
+th {
+  background-color: #fff2e6;
+}
