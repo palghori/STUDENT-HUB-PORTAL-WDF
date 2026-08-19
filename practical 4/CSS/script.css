@@ -202,3 +202,69 @@ td {
 th {
   background-color: #fff2e6;
 }
+
+/* Dark mode styles */
+body.dark-mode {
+  background: linear-gradient(135deg, #1e1e1e 0%, #121212 100%);
+  color: #e0e0e0;
+}
+body.dark-mode .navbar {
+  background: linear-gradient(90deg, #333, #222);
+}
+body.dark-mode .hero,
+body.dark-mode .card,
+body.dark-mode .content-box,
+body.dark-mode .form-box {
+  background: #2a2a2a;
+  border-color: #444;
+}
+body.dark-mode .hero h1,
+body.dark-mode .hero h2,
+body.dark-mode .card h2,
+body.dark-mode .content-box h2,
+body.dark-mode .form-box h2 {
+  color: #f0a060;
+}
+body.dark-mode .feature-box {
+  background: #333;
+  border-color: #555;
+}
+body.dark-mode .feature-box h3 {
+  color: #f0a060;
+}
+body.dark-mode p,
+body.dark-mode ul,
+body.dark-mode li {
+  color: #ccc;
+}
+body.dark-mode label {
+  color: #ccc;
+}
+body.dark-mode input,
+body.dark-mode textarea,
+body.dark-mode select {
+  background: #333;
+  color: #fff;
+  border-color: #555;
+}
+body.dark-mode th,
+body.dark-mode td {
+  border-color: #444;
+  background-color: #2a2a2a;
+  color: #eee;
+}
+body.dark-mode th {
+  background-color: #333;
+}
+body.dark-mode .nav-links a,
+body.dark-mode .hero>p a {
+  color: #f0a060;
+}
+body.dark-mode .hero a,
+body.dark-mode a {
+  color: #e0a060;
+}
+body.dark-mode .toggle-btn {
+  background: #f0a060;
+  color: #121212;
+}
