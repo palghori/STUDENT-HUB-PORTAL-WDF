@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="../CSS/script.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <a class="brand" href="index.html">StudentHub</a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="courses.html">Courses</a>
+        <a href="assignment.html">Assignments</a>
+        <a href="attendence.html">Attendance</a>
+        <a href="result.html">Result</a>
+        <a href="events.html">Events</a>
+        <a href="profile.html">Profile</a>
+        <a href="contact.html">Contact</a>
+        <a href="login.html">Login</a>
+        <a href="register.html">Register</a>
+        <a href="logout.php" style="color:#f44336;">Logout</a>
+        <button class="toggle-btn" onclick="toggleDarkMode()" style="width: auto; padding: 5px 10px; margin-left: 10px; border-radius: 5px; cursor: pointer; font-weight: bold;">Toggle Dark Mode</button>
+      </div>
+    </nav>
+
+    <main>
+      <section class="form-box">
+        <h2>Login</h2>
+
+        <!-- Show dynamic messages from URL (timeout, logged out, etc.) -->
+        <script>
+          const params = new URLSearchParams(window.location.search);
+          if (params.get('msg') === 'timeout') {
+            document.write('<p style="color:#f44336;font-weight:bold;">Session timed out. Please log in again.</p>');
+          } else if (params.get('msg') === 'loggedout') {
+            document.write('<p style="color:#4CAF50;font-weight:bold;">You have been logged out successfully.</p>');
+          } else if (params.get('msg') === 'pleaselogin') {
+            document.write('<p style="color:#f44336;font-weight:bold;">Please login to access that page.</p>');
+          }
+        </script>
+
+        <!-- Form now posts to PHP backend -->
+        <form action="process_login.php" method="POST">
+          <label for="email">Email Address</label>
+          <input id="email" name="email" type="email" placeholder="student@example.com" required />
+
+          <label for="password">Password</label>
+          <input id="password" name="password" type="password" placeholder="Enter password" required />
+
+          <!-- Remember Me checkbox -->
+          <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+            <input type="checkbox" id="remember_me" name="remember_me" style="width: auto;">
+            <label for="remember_me" style="margin: 0; font-weight: normal;">Remember Me</label>
+          </div>
+
+          <button type="submit">Login</button>
+        </form>
+        <p style="margin-top: 10px; text-align:center;">Don't have an account? <a href="register.html" style="color:#f0a060;">Register here</a></p>
+      </section>
+    </main>
+    <script src="../java.js"></script>
+  </body>
+</html>

@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Events - StudentHub Portal</title>
+    <link rel="stylesheet" href="../CSS/script.css" />
+    <style>
+      .events-container {
+        max-width: 1000px;
+        margin: 20px auto;
+        padding: 20px;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      }
+      .controls {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 20px;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .controls input, .controls select, .controls button {
+        padding: 8px 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 14px;
+      }
+      .event-card {
+        border: 1px solid #e0e0e0;
+        padding: 15px;
+        margin-bottom: 15px;
+        border-radius: 6px;
+        background: #f9f9f9;
+      }
+      .event-title {
+        font-size: 18px;
+        color: #8b5e3c;
+        margin-top: 0;
+        margin-bottom: 5px;
+      }
+      .event-meta {
+        font-size: 13px;
+        color: #666;
+        margin-bottom: 10px;
+      }
+      .event-meta span {
+        margin-right: 15px;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <a class="brand" href="index.html">StudentHub</a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="courses.html">Courses</a>
+        <a href="assignment.html">Assignments</a>
+        <a href="attendence.html">Attendance</a>
+        <a href="result.html">Result</a>
+        <a href="events.html">Events</a>
+        <a href="profile.html">Profile</a>
+        <a href="contact.html">Contact</a>
+        <a href="login.html">Login</a>
+        <a href="register.html">Register</a>
+      
+        <button class="toggle-btn" onclick="toggleDarkMode()" style="width: auto; padding: 5px 10px; margin-left: 10px; border-radius: 5px; cursor: pointer; font-weight: bold;">Toggle Dark Mode</button>
+      </div>
+    </nav>
+
+    <main>
+      <div class="events-container">
+        <h2>Campus Events & Notices</h2>
+        
+        <div class="controls">
+          <div>
+            <input type="text" id="searchInput" placeholder="Search events..." onkeyup="handleSearch()">
+          </div>
+          <div>
+            <select id="filterCategory" onchange="handleFilter()">
+              <option value="All">All Categories</option>
+              <option value="Academic">Academic</option>
+              <option value="Sports">Sports</option>
+              <option value="Technical">Technical</option>
+              <option value="Cultural">Cultural</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div>
+            <select id="sortDate" onchange="handleSort()">
+              <option value="asc">Date: Earliest First</option>
+              <option value="desc">Date: Latest First</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="eventsList">
+          <!-- Events will be rendered here dynamically -->
+          <p>Loading events...</p>
+        </div>
+
+        <div class="pagination">
+          <button id="prevBtn" onclick="prevPage()">Previous</button>
+          <span id="pageInfo">Page 1</span>
+          <button id="nextBtn" onclick="nextPage()">Next</button>
+        </div>
+      </div>
+    </main>
+    <script src="../java.js"></script>
+    <script src="../JS/events.js"></script>
+  </body>
+</html>

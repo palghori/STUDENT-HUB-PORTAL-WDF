@@ -1,13 +1,10 @@
 <?php
+// Include the database connection file
+require_once 'db_connect.php';
+
 // Display errors for debugging
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
-
-$data_dir = __DIR__ . '/../DATA';
-if (!file_exists($data_dir)) {
-    mkdir($data_dir, 0777, true);
-}
-$file_path = $data_dir . '/registrations.json';
 
 $message = "";
 $success = false;
@@ -18,6 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $enrollment = htmlspecialchars(strip_tags(trim($_POST['enrollment'] ?? '')));
     $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
     $mobile = htmlspecialchars(strip_tags(trim($_POST['mobile'] ?? '')));
+    $raw_password = $_POST['password'] ?? '';
     $course = htmlspecialchars(strip_tags(trim($_POST['course'] ?? '')));
     $year = htmlspecialchars(strip_tags(trim($_POST['year'] ?? '')));
     $gender = htmlspecialchars(strip_tags(trim($_POST['gender'] ?? '')));
@@ -25,37 +23,41 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Validate
     if (filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
         $message = "Error: Invalid email format.";
-    } elseif (empty($name) || empty($enrollment) || empty($email) || empty($mobile)) {
+    } elseif (empty($name) || empty($enrollment) || empty($email) || empty($mobile) || empty($raw_password)) {
         $message = "Error: Please fill in all required fields.";
     } else {
-        // Read existing JSON data
-        $records = [];
-        if (file_exists($file_path)) {
-            $json_data = file_get_contents($file_path);
-            if ($json_data) {
-                $records = json_decode($json_data, true) ?? [];
-            }
-        }
+        // Hash the password for security
+        $password_hash = password_hash($raw_password, PASSWORD_DEFAULT);
 
-        // Add new record
-        $new_record = [
-            "name" => $name,
-            "enrollment" => $enrollment,
-            "email" => $email,
-            "mobile" => $mobile,
-            "course" => $course,
-            "year" => $year,
-            "gender" => $gender
-        ];
-        
-        $records[] = $new_record;
-        
-        // Save back to JSON file
-        if (file_put_contents($file_path, json_encode($records, JSON_PRETTY_PRINT))) {
+        try {
+            // Prepare an SQL statement using placeholders (?) to prevent SQL Injection
+            $sql = "INSERT INTO students (full_name, enrollment_id, email, mobile, password_hash, course, year, gender) 
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+            
+            $stmt = $pdo->prepare($sql);
+            
+            // Execute the prepared statement with the sanitized variables
+            $stmt->execute([
+                $name, 
+                $enrollment, 
+                $email, 
+                $mobile, 
+                $password_hash, 
+                $course, 
+                $year, 
+                $gender
+            ]);
+
             $success = true;
-            $message = "Registration successful! Data saved to JSON.";
-        } else {
-            $message = "Error: Could not save data. Please check folder permissions.";
+            $message = "Registration successful! Account created securely in MySQL.";
+
+        } catch (PDOException $e) {
+            // Check if error is due to a duplicate unique key (enrollment or email)
+            if ($e->getCode() == 23000) {
+                $message = "Error: An account with this Enrollment ID or Email already exists.";
+            } else {
+                $message = "Database Error: " . $e->getMessage();
+            }
         }
     }
 } else {

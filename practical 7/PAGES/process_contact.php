@@ -31,11 +31,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($handle) {
             // Add headers if new file
             if (!$file_exists || filesize($file_path) == 0) {
-                fputcsv($handle, ['Name', 'Email', 'Message', 'Timestamp']);
+                fputcsv($handle, ['Name', 'Email', 'Message']);
             }
             
             // Add the new row
-            fputcsv($handle, [$name, $email, $user_message, date('Y-m-d H:i:s')]);
+            fputcsv($handle, [$name, $email, $user_message]);
             fclose($handle);
             
             $success = true;
