@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Practical 13 – AJAX Event Manager</title>
+    <link rel="stylesheet" href="../CSS/script.css" />
+    <style>
+        /* Loading spinner */
+        #loading {
+            display: none;
+            text-align: center;
+            color: #f0a060;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        /* Status message bar */
+        #status-msg {
+            display: none;
+            font-weight: bold;
+            font-size: 1rem;
+            margin: 10px 0;
+            padding: 10px 14px;
+            border-radius: 6px;
+            background: rgba(255,255,255,0.07);
+        }
+
+        /* Add event form layout */
+        .add-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+        .add-grid .full-row { grid-column: 1 / -1; }
+
+        /* Events table */
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { padding: 10px 12px; border: 1px solid #444; text-align: left; font-size: 0.88rem; }
+        th { background: #f0a060; color: #111; }
+        tr:nth-child(even) { background: rgba(255,255,255,0.04); }
+
+        /* Action buttons */
+        .btn-edit   { background: #4a90e2; color: #fff; border: none; padding: 5px 12px; border-radius: 4px; cursor: pointer; margin-right: 6px; }
+        .btn-delete { background: #e25555; color: #fff; border: none; padding: 5px 12px; border-radius: 4px; cursor: pointer; }
+        .btn-edit:hover   { background: #357abd; }
+        .btn-delete:hover { background: #c0392b; }
+
+        /* Edit section */
+        #edit-section {
+            display: none;
+            margin-top: 30px;
+            border-top: 2px dashed #f0a060;
+            padding-top: 20px;
+        }
+        #edit-section h3 { color: #f0a060; margin-bottom: 14px; }
+
+        select, textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid #555;
+            background: #1a1a2e;
+            color: #eee;
+        }
+        textarea { resize: vertical; }
+    </style>
+</head>
+<body>
+<nav class="navbar">
+    <a class="brand" href="#">StudentHub</a>
+    <div class="nav-links">
+        <a href="index.html">Practical 13 – AJAX CRUD</a>
+    </div>
+</nav>
+
+<main>
+    <section class="form-box" style="max-width: 1000px;">
+        <h2>Event Manager — AJAX / Fetch API</h2>
+        <p style="color:#aaa;font-size:0.9rem;margin-bottom:18px;">
+            All operations below happen <strong style="color:#f0a060;">without reloading the page</strong>,
+            using JavaScript Fetch API and PHP JSON endpoints.
+        </p>
+
+        <!-- ── Status Message ─────────────────────────── -->
+        <div id="status-msg"></div>
+
+        <!-- ── Loading Indicator ──────────────────────── -->
+        <div id="loading">⏳ Loading...</div>
+
+        <!-- ────────────────────────────────────────────── -->
+        <!-- ADD EVENT FORM (calls POST via Fetch)          -->
+        <!-- ────────────────────────────────────────────── -->
+        <h3 style="margin-bottom:12px;">➕ Add New Event</h3>
+        <form id="add-form" onsubmit="addEvent(event)">
+            <div class="add-grid">
+                <div>
+                    <label>Event Title *</label>
+                    <input id="add-title" type="text" placeholder="e.g. Tech Fest 2025" required />
+                </div>
+                <div>
+                    <label>Category</label>
+                    <select id="add-category">
+                        <option value="Technical">Technical</option>
+                        <option value="Cultural">Cultural</option>
+                        <option value="Sports">Sports</option>
+                        <option value="Workshop">Workshop</option>
+                        <option value="Seminar">Seminar</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div>
+                    <label>Event Date *</label>
+                    <input id="add-date" type="date" required />
+                </div>
+                <div class="full-row">
+                    <label>Description</label>
+                    <textarea id="add-desc" rows="3" placeholder="Brief description..."></textarea>
+                </div>
+                <div class="full-row">
+                    <button type="submit">Add Event (No Reload)</button>
+                </div>
+            </div>
+        </form>
+
+        <!-- ────────────────────────────────────────────── -->
+        <!-- EVENTS TABLE (populated by GET via Fetch)      -->
+        <!-- ────────────────────────────────────────────── -->
+        <h3 style="margin-top:28px;margin-bottom:8px;">📋 All Events</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Title</th>
+                    <th>Category</th>
+                    <th>Date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="events-tbody">
+                <tr><td colspan="5" style="text-align:center;color:#aaa;">Loading events...</td></tr>
+            </tbody>
+        </table>
+
+        <!-- ────────────────────────────────────────────── -->
+        <!-- EDIT FORM (appears inline, calls PUT via Fetch) -->
+        <!-- ────────────────────────────────────────────── -->
+        <div id="edit-section">
+            <h3>✏️ Edit Event</h3>
+            <form id="edit-form" onsubmit="updateEvent(event)">
+                <input type="hidden" id="edit-id" />
+                <div class="add-grid">
+                    <div>
+                        <label>Event Title *</label>
+                        <input id="edit-title" type="text" required />
+                    </div>
+                    <div>
+                        <label>Category</label>
+                        <select id="edit-category">
+                            <option value="Technical">Technical</option>
+                            <option value="Cultural">Cultural</option>
+                            <option value="Sports">Sports</option>
+                            <option value="Workshop">Workshop</option>
+                            <option value="Seminar">Seminar</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label>Event Date *</label>
+                        <input id="edit-date" type="date" required />
+                    </div>
+                    <div class="full-row">
+                        <label>Description</label>
+                        <textarea id="edit-desc" rows="3"></textarea>
+                    </div>
+                    <div class="full-row" style="display:flex;gap:10px;">
+                        <button type="submit" style="background:#4a90e2;">Update Event</button>
+                        <button type="button" onclick="closeEditForm()"
+                                style="background:#555;color:#fff;border:none;padding:10px 20px;border-radius:6px;cursor:pointer;">
+                            Cancel
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </section>
+</main>
+
+<!-- Load the JavaScript file that handles all Fetch API calls -->
+<script src="../JS/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,447 @@
+/* ==============================================================
+   STUDENT HUB PORTAL - Practical 15 Final Integrated Stylesheet
+   Cohesive, Responsive, and Accessible Design System
+   ============================================================== */
+
+/* 1. Reset and Base */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+  background: linear-gradient(135deg, #fff8f0 0%, #fdf2e9 100%);
+  color: #3a2a1a;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.6;
+}
+
+/* Accessibility: Clear Keyboard Focus Ring */
+a:focus,
+button:focus,
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 3px solid #d35400;
+  outline-offset: 2px;
+}
+
+/* 2. Navigation Bar */
+.navbar {
+  background: linear-gradient(90deg, #8b5e3c, #c97a45);
+  padding: 14px 28px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.brand {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 1.45rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.brand:hover {
+  color: #fff3e6;
+}
+
+.nav-links {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.nav-links a {
+  color: #ffecd9;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 8px 13px;
+  border-radius: 6px;
+  font-size: 0.92rem;
+  transition: all 0.2s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  background: rgba(255, 255, 255, 0.22);
+  color: #ffffff;
+}
+
+.nav-links .btn-logout {
+  background: #a93226;
+  color: #ffffff;
+}
+
+.nav-links .btn-logout:hover {
+  background: #c0392b;
+}
+
+/* 3. Main Container */
+main {
+  flex: 1;
+  padding: 28px 20px 48px;
+  max-width: 1120px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* 4. Hero Banner */
+.hero {
+  background: #ffffff;
+  border: 1px solid #ebd7c4;
+  border-radius: 14px;
+  padding: 36px 32px;
+  margin-bottom: 28px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+  border-left: 8px solid #8b5e3c;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.hero h1 {
+  font-size: 2rem;
+  color: #6d4423;
+  margin-bottom: 8px;
+}
+
+.hero p {
+  color: #6c543e;
+  font-size: 1.05rem;
+  max-width: 650px;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* 5. Content Cards */
+.card {
+  background: #ffffff;
+  padding: 24px;
+  border: 1px solid #ebd7c4;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+  margin-bottom: 24px;
+}
+
+.card h2 {
+  color: #8b5e3c;
+  margin-top: 0;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.35rem;
+}
+
+/* 6. Feature Grid */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+  margin-bottom: 28px;
+}
+
+.feature-card {
+  background: #ffffff;
+  border: 1px solid #f0d8c2;
+  border-radius: 12px;
+  padding: 22px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.feature-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.feature-card h3 {
+  color: #8b5e3c;
+  margin-bottom: 8px;
+  font-size: 1.2rem;
+}
+
+.feature-card p {
+  color: #6d5843;
+  font-size: 0.95rem;
+  flex: 1;
+  margin-bottom: 16px;
+}
+
+/* 7. Statistics KPI Grid */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 18px;
+  margin-bottom: 28px;
+}
+
+.stat-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  border: 1px solid #fae6d3;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.stat-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  flex-shrink: 0;
+}
+
+.stat-icon.students { background: #e8f4fd; color: #1e88e5; }
+.stat-icon.events   { background: #fef5e7; color: #f39c12; }
+.stat-icon.regs     { background: #eafaf1; color: #27ae60; }
+.stat-icon.admins   { background: #fbeee6; color: #d35400; }
+.stat-icon.logs     { background: #f4ecf7; color: #8e44ad; }
+
+.stat-number {
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: #3a2a1a;
+  line-height: 1.1;
+}
+
+.stat-label {
+  font-size: 0.88rem;
+  color: #7f6a55;
+  margin-top: 4px;
+}
+
+/* 8. Tables */
+.table-responsive {
+  overflow-x: auto;
+  border-radius: 8px;
+  border: 1px solid #ebd7c4;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #ffffff;
+  font-size: 0.95rem;
+}
+
+th {
+  background: #f7ede2;
+  color: #6e4627;
+  padding: 12px 16px;
+  text-align: left;
+  font-weight: 600;
+  border-bottom: 2px solid #e0c5aa;
+}
+
+td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #f4e8dc;
+  color: #4a3828;
+}
+
+tr:hover td {
+  background: #fffaf4;
+}
+
+.table-thumb {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid #dcc2aa;
+}
+
+/* 9. Badges */
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 50px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.badge-admin   { background: #fbeee6; color: #b9380a; border: 1px solid #edbb99; }
+.badge-student { background: #e8f4fd; color: #1565c0; border: 1px solid #bbdefb; }
+.badge-login   { background: #eafaf1; color: #1e8449; border: 1px solid #a9dfbf; }
+.badge-logout  { background: #fdedec; color: #c0392b; border: 1px solid #fadbd8; }
+.badge-action  { background: #fcf3cf; color: #b7950b; border: 1px solid #f9e79f; }
+.badge-system  { background: #ebf5fb; color: #2980b9; border: 1px solid #aed6f1; }
+
+/* 10. Alerts */
+.alert {
+  padding: 14px 18px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-size: 0.95rem;
+}
+
+.alert-success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+.alert-error   { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+.alert-info    { background: #d1ecf1; color: #0c5460; border: 1px solid #bee5eb; }
+.alert-warning { background: #fff3cd; color: #856404; border: 1px solid #ffeeba; }
+
+/* 11. Buttons */
+.btn {
+  display: inline-block;
+  padding: 9px 18px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  font-size: 0.92rem;
+  transition: all 0.2s ease;
+  text-align: center;
+}
+
+.btn-primary { background: #8b5e3c; color: #ffffff; }
+.btn-primary:hover { background: #704729; }
+
+.btn-secondary { background: #6c757d; color: #ffffff; }
+.btn-secondary:hover { background: #5a6268; }
+
+.btn-success { background: #27ae60; color: #ffffff; }
+.btn-success:hover { background: #219653; }
+
+.btn-danger { background: #c0392b; color: #ffffff; }
+.btn-danger:hover { background: #a93226; }
+
+.btn-outline {
+  background: transparent;
+  color: #8b5e3c;
+  border: 1px solid #8b5e3c;
+}
+.btn-outline:hover { background: #8b5e3c; color: #ffffff; }
+
+/* 12. Forms & Inputs */
+.form-box {
+  max-width: 500px;
+  margin: 36px auto;
+  background: #ffffff;
+  padding: 32px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid #ebd7c4;
+}
+
+.form-group {
+  margin-bottom: 16px;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #5d3d22;
+  font-size: 0.92rem;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #dcc2aa;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  background: #fffcf9;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: #8b5e3c;
+  box-shadow: 0 0 0 3px rgba(139, 94, 60, 0.15);
+}
+
+/* 13. Search and Filter Bar */
+.filter-bar {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  align-items: center;
+}
+
+.filter-bar input,
+.filter-bar select {
+  padding: 8px 12px;
+  border: 1px solid #dcc2aa;
+  border-radius: 6px;
+  background: #ffffff;
+}
+
+/* 14. Access Denied Box */
+.access-denied-box {
+  max-width: 580px;
+  margin: 40px auto;
+  text-align: center;
+  background: #ffffff;
+  padding: 40px 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  border: 2px solid #e74c3c;
+}
+
+/* 15. Footer */
+footer {
+  background: #f7ede2;
+  border-top: 1px solid #ebd7c4;
+  padding: 22px 20px;
+  text-align: center;
+  color: #7d6550;
+  font-size: 0.9rem;
+}
+
+footer a {
+  color: #8b5e3c;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* 16. Responsiveness */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .nav-links {
+    width: 100%;
+    margin-top: 10px;
+  }
+  .hero {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
